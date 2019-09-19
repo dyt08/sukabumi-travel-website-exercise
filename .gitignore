@@ -6,14 +6,6 @@ package-lock.json
 app - Copy.js
 /ssl
 
-# testing
-/coverage
-
-# production
-/build
-/public
-
-
 # misc
 .DS_Store
 .env.local
