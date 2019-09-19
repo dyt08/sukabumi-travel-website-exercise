@@ -1,0 +1,84 @@
+<head>
+<title>Wisata Sukabumi</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,100,400' rel='stylesheet' type='text/css'>
+<!-- js -->
+<script src="js/jquery.min.js"></script>
+<!-- //js -->
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eco Travel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+
+		$(function() {
+    		$('form').each(function() {
+        	$(this).find('input').keypress(function(e) {
+            	if(e.which == 13) {
+             	   this.q.submit();
+            	}
+        	});
+    	});
+
+});
+
+
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+
+<!-- banner -->
+	<div class="banner-with-text">
+		<div class="container">
+<!-- header -->	
+		<div class="header">
+			<div class="header-top">
+				<form action="/search" method="get">
+					<input name="q" type="text" placeholder="Pencarian" required>
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+			<div class="header-bottom">
+				<div class="header-bottom-left">
+					<a href="/"><img src="images/wisata.png" width="70%"><span><img src="images/sukabumi.png" width="95%"></span></a>
+				</div>
+				<div class="header-bottom-right">
+					<span class="menu">MENU</span>
+					<ul class="nav1">
+						 <!-- <% if (title === 'home') { %>class="cap" <% } %>  //agar menu hitam saat berada di page menu tersebut-->
+						<li><a href="/">HOME</a></li>
+						<li><a href="/about">TENTANG SUKABUMI</a></li>
+						<li><a href="/alam">WISATA ALAM</a></li>
+						<li><a href="/kuliner">WISATA KULINER</a></li>
+						<li><a href="/contact">CONTACT</a></li>
+					</ul>
+					<!-- script for menu -->
+						<script> 
+							$( "span.menu" ).click(function() {
+							$( "ul.nav1" ).slideToggle( 300, function() {
+							 // Animation complete.
+							});
+							});
+						</script>
+					<!-- //script for menu -->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>	
+</div>
+<!-- //header -->

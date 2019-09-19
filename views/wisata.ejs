@@ -1,0 +1,69 @@
+<% include ./layouts/headerpost %>
+<body>
+<!-- blog -->
+<div class="banner-bdy blg">
+	<div class="container">
+	<div class="blog">
+		<h2>Daftar Wisata <%= title %></h2>
+		<p class="gal-txt"> </p>
+		
+		<div class="blog-grids">
+		<% Wisata.forEach(function (tours) { %>
+			<div class="col-md-3 blog-grid">
+				<div class="blog-grid1">
+					<a href="/<%=title%>/<%=tours.wisata_id%>"><img src="/uploads/wisata/<%=tours.images%>" height="180" /></a>
+					<div class="blog-grid1-info">
+						<div class="soluta">
+							<a href="/<%=title%>/<%=tours.wisata_id%>"><%=tours.name%></a>
+						</div>
+						<p style="word-break: break-all;"><%=tours.descr.substring(0,120)%>...</p>
+						<div class="red-mre">
+							<a href="/<%=title%>/<%=tours.wisata_id%>">Read More</a> 
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+			<div class="clearfix"> </div>
+		</div>
+		
+		<nav>
+		<% if (pageCount > 0) { %>
+		  <ul class="pagination">
+			<% if (currentPage == 1) { %>
+			<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">First</span></a></li>
+			<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+			<% } else { %>
+			<li><a href="/<%=title%>/?page=1" aria-label="Previous"><span aria-hidden="true">First</span></a></li>
+			<li><a href="/<%=title%>/?page=<%= Number(currentPage)-1 %>" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            <% } %>
+            <% var i = (Number(currentPage) > 5 ? Number(currentPage) - 4 : 1) %>
+            <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% for (; i <= (Number(currentPage) + 4) && i <= pageCount; i++) { %>
+            <% if (i == currentPage) { %>
+            <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+            <li><a href="/<%=title%>/?page=<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(currentPage) + 4 && i < pageCount) { %>
+            <li class="disabled"><a>...</a></li>
+            <% } %>
+            <% } %>
+            <% if (currentPage == pageCount) { %>
+            <li class="disabled" aria-label="Next"><a><span aria-hidden="true">»</span></a></li>
+			<li class="disabled" aria-label="Next"><a><span aria-hidden="true">Last</span></a></li>
+            <% } else { %>
+            <li><a href="/<%=title%>/?page=<%= Number(currentPage)+1 %>"  aria-label="Next"><span aria-hidden="true">»</span></a></li>
+			<li><a href="/<%=title%>/?page=<%= pageCount %>"  aria-label="Next"><span aria-hidden="true">Last</span></a></li>
+			<% } %>
+		  </ul>
+		<% } %>
+		</nav>
+	</div>
+	</div>
+	</div>
+<!-- //blog -->
+</body>
+<% include ./layouts/footer %>

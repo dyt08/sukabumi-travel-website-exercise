@@ -1,0 +1,39 @@
+<% include ./layouts/headerpost %>
+<body>
+<!-- contact -->
+	<div class="banner-bdy con">
+		<div class="container">
+			<div class="contact">
+				<div class="map">
+					<h3>Contact</h3>
+					<p class="gal-txt"> </p>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3334.4089870526836!2d106.83813000014472!3d-6.354822772093498!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec475427cefd%3A0xc4e7eee0f871687!2sUniversitas+Gunadarma+Kampus+E!5e0!3m2!1sid!2sid!4v1530284987656" frameborder="0" style="border:0"></iframe>
+				</div>
+				<div class="contact-form">
+					<div class="col-md-4 contact-form-left">
+						<h4>CONTACT INFO</h4>
+						<p>Punya pertanyaan seputar wisata di sukabumi atau punya kritik dan saran untuk kami? Silahkan hubungi kontak kami dibawah ini atau bisa langsung isi form di samping.</p>
+						<h5>Address:</h5>
+						<p>Jl. Komjen.Pol.M.Jasin No.9, Tugu, Cimanggis</p>
+						<p> Kota Depok, Jawa Barat 16451</p>
+						<p>Telephone: +62 878 0989 8818</p>
+						<a href="mailto:indonesia.adit@gmail.com">indonesia.adit@gmail.com</a>
+					</div>
+					<div class="col-md-8 contact-form-right">
+						<h4>CONTACT FORM</h4>
+						<form  action="/ncontact" method="POST" enctype="application/x-www-form-urlencoded">
+							<input type="text" name="nama" placeholder="Nama" required>
+							<input type="email" name="email" placeholder="Email" required>
+							<input type="number" name="telephone" placeholder="Telephone" required>
+							<textarea type="text" name="message" placeholder="Message" required></textarea>
+							<input type="submit" value="Submit" >
+						</form>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- //contact -->				
+</body>
+<% include ./layouts/footer %>

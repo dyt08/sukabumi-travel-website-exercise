@@ -1,0 +1,75 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<!--header-->
+<% include ../admin/layouts/header %>
+<!--//header-->
+<body>
+<!-- Sidebar -->
+<% include ../admin/layouts/sidebar %>
+<!-- //Sidebar -->   
+
+<div class="grid-form">
+	<% pp.forEach(function (p) { %>
+  	<div class="grid-form1">
+  	    <h4>Nomer Ticket : <%=p.ticket%></h4>
+  	    <div class="tab-content">
+			<div class="tab-pane active" id="horizontal-form">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label class="col-sm-2 control-label label-input-sm">Waktu</label>
+						<div class="col-sm-8">
+							<input name="email" type="text" class="form-control1 input-sm" readonly value="<%=p.idatetime%>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label label-input-sm">Nama</label>
+						<div class="col-sm-8">
+							<input name="nama" type="text" class="form-control1 input-sm" readonly value="<%=p.nama%>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label label-input-sm">No Telp</label>
+						<div class="col-sm-8">
+							<input name="telephone" type="text" class="form-control1 input-sm" readonly value="<%=p.telephone%>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label label-input-sm">Email</label>
+						<div class="col-sm-8">
+							<input name="email" type="text" class="form-control1 input-sm" readonly value="<%=p.email%>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Pesan</label>
+							<div class="col-sm-8"><textarea name="pesan" class="form-control1" style="word-wrap: break-word;word-break: break-all;height: 250px; width: 690px;" readonly><%=p.pesan%></textarea></div>
+					</div>
+      				<div class="panel-footer">
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2">
+								<form action="../../admin/nstatus/<%=p.ticket%>" method="POST" enctype="multipart/form-data">
+								<button class="btn-primary btn" type="submit" <% if (p.status === 'Closed') {%> disabled <% } %> >Tandai Sudah Selesai</button>
+								<a href="../../admin/inbox" class="btn-default btn">Kembali</a></form>
+							</div>
+						</div>
+	 				</div>
+	 			</div>
+    		</div>
+  		</div>
+  	</div>
+  	<% }); %>
+</div>
+
+<!--Footer-->
+<% include ../admin/layouts/footer %>
+<!--//Footer-->
+
+</body>
+</html>
+

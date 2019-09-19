@@ -1,0 +1,44 @@
+<% include ./layouts/headerpost %>
+<body>
+<!-- single -->
+	<div class="banner-bdy sig">
+		<div class="container">
+			<div class="single">
+			<div class="col-md-8 sing-img-text">
+				<img src="/uploads/wisata/<%=items[0].images%>" alt=" ">
+				<div class="sing-img-text1">
+					<h3><%=items[0].name%></h3>
+					<p class="est" align="justify"><%=items[0].descr%></p>		
+				</div>
+				<div class="map">
+					<iframe src="<%=items[0].maps%>" frameborder="0" style="border:0"></iframe>
+				</div>
+			</div>
+			<div class="col-md-4 sing-img-text-left">
+				<div class="blog-right1">
+					<div class="related-posts">
+						<h3>Wisata Lainnya</h3>
+						
+						<% Wisata.forEach(function (tours) { %>
+						<div class="related-post">
+							<div class="related-post-left">
+								<a href="/<%=title%>/<%=tours.wisata_id%>"><img src="/uploads/wisata/<%=tours.images%>" alt=" " /></a>
+							</div>
+							<div class="related-post-right">
+								<h4><a href="/<%=title%>/<%=tours.wisata_id%>"><%=tours.name%></a></h4>
+								<p align="justify"><%=tours.descr.substring(0,64)%></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<% }); %>
+						
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		</div>
+	</div>
+<!-- //single -->
+</body>
+<% include ./layouts/footer %>

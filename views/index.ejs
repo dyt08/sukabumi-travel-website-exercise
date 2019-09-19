@@ -1,0 +1,157 @@
+<% include ./layouts/header %>
+<!-- Slider-starts-Here -->
+				<script src="js/responsiveslides.min.js"></script>
+				 <script>
+				    // You can also use "$(window).load(function() {"
+				    $(function () {
+				      // Slideshow 4
+				      $("#slider3").responsiveSlides({
+				        auto: true,
+				        pager: true,
+				        nav: false,
+				        speed: 500,
+				        namespace: "callbacks",
+				        before: function () {
+				          $('.events').append("<li>before event fired.</li>");
+				        },
+				        after: function () {
+				          $('.events').append("<li>after event fired.</li>");
+				        }
+				      });
+				
+				    });
+				  </script>
+			<!--//End-slider-script -->
+			<div  id="top" class="callbacks_container wow fadeInUp" data-wow-delay="0.5s">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="banner">	
+							<div class="jumbotron banner-info">
+								<h1><i>Selamat Datang di Website Sistem Informasi Wisata Sukabumi</i></h1>
+								<p><a class="btn btn-primary btn-lg" href="/about" role="button">TENTANG SUKABUMI</a></p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner1">	
+							<div class="jumbotron banner-info">
+								<h1><i>Sukabumi terkenal dengan panorama alamnya yang masih sangat alami dan indah</i></h1>
+								<p><a class="btn btn-primary btn-lg" href="/alam" role="button">LIHAT DAFTAR WISATA ALAM</a></p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner2">	
+							<div class="jumbotron banner-info">
+								<h1><i>Tentunya selain tempat wisata, kita akan mencari referesi kuliner yang khas dari daerah tersebut</i></h1>
+								<p><a class="btn btn-primary btn-lg" href="/kuliner" role="button">LIHAT DAFTAR WISATA KULINER</a></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+	</div>
+	</div>
+<!-- //banner -->
+<!-- banner-bottom -->
+	<div class="banner-bdy">
+		<div class="container">
+	<div class="banner-bottom" id="events">
+			<div class="fig-text1-right"><h3><a href="/alam">&ensp;&nbsp;Daftar Wisata Alam</a></h3></div>
+				<div class="blog-grids">
+		<% Alam.forEach(function (wisa) { %>
+			<div class="col-md-3 blog-grid">
+				<div class="blog-grid1">
+					<a href="/alam/<%=wisa.wisata_id%>"><img src="/uploads/wisata/<%=wisa.images%>" height="180"/></a>
+					<div class="blog-grid1-info">
+						<div class="soluta">
+							<a href="/alam/<%=wisa.wisata_id%>"><%=wisa.name%></a>
+						</div>
+						<p align="justify"><%=wisa.descr.substring(0,120)%></p>
+						<div class="red-mre">
+							<a href="/alam/<%=wisa.wisata_id%>">Read More</a> 
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+			<div class="clearfix"> </div>
+		</div>
+
+
+		<div class="fig-text1-right"><h3><a href="/kuliner">&ensp;&nbsp;Daftar Wisata Kuliner</a></h3></div>
+				<div class="blog-grids">
+		<% Kuliner.forEach(function (wisk) { %>
+			<div class="col-md-3 blog-grid">
+				<div class="blog-grid1">
+					<a href="/kuliner/<%=wisk.wisata_id%>"><img src="/uploads/wisata/<%=wisk.images%>" height="180"/></a>
+					<div class="blog-grid1-info">
+						<div class="soluta">
+							<a href="/kuliner/<%=wisk.wisata_id%>"><%=wisk.name%></a>
+						</div>
+						<p align="justify"><%=wisk.descr.substring(0,120)%></p>
+						<div class="red-mre">
+							<a href="/kuliner/<%=wisk.wisata_id%>">Read More</a> 
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+			<div class="clearfix"> </div>
+		</div>
+			
+	</div>
+<!-- //banner-bottom -->
+
+</body>
+
+<!-- slider -->
+	<div class="sliderfig">
+		<ul id="flexiselDemo1">
+		<% Rand.forEach(function (r) { %>			
+			<li>
+				<div class="sliderfig-grids">
+					<div class="sliderfig-grid">
+						<a href="/<%= r.category %>/<%=r.wisata_id%>"><img src="/uploads/wisata/<%=r.images%>" height="180px" /></a>
+						<div class="slider-text">
+							<a href="/<%= r.category %>/<%=r.wisata_id%>"><p><%=r.name%></p></a>
+						</div>
+					</div>
+				</div>
+			</li>
+		<% }); %>
+			</ul>
+			<script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems: 4,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,    		
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: { 
+										portrait: { 
+											changePoint:480,
+											visibleItems: 2
+										}, 
+										landscape: { 
+											changePoint:640,
+											visibleItems:3
+										},
+										tablet: { 
+											changePoint:768,
+											visibleItems: 3
+										}
+									}
+								});
+								
+							});
+					</script>
+					<script type="text/javascript" src="../js/jquery.flexisel.js"></script>
+	</div>
+	</div>
+	</div>
+<!-- //slider -->
+
+<% include ./layouts/footer %>

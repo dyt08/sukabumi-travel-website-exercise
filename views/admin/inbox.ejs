@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--header-->
+<% include ../admin/layouts/header %>
+<!--//header-->
+
+<body>
+
+<!-- Sidebar -->
+<% include ../admin/layouts/sidebar %>
+<!-- //Sidebar -->       	
+
+ 	<div class="blank">
+		<div class="tab-pane active text-style" id="tab1">
+            <div class="inbox-right">
+                <div class="mailbox-content">
+                    <div class="mail-toolbar clearfix">
+                        <div class="float-left">
+                            <div class="btn-group m-r-sm mail-hidden-options" style="display: inline-block;">
+                                <h2>Inbox</h2>
+                                <!-- <div class="btn-group">
+                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tags"></i>&nbsp;Status&nbsp;<span class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <li><a href="#">All</a></li>
+                                        <li><a href="#">Open</a></li>
+                                        <li><a href="#">Closed</a></li>
+                                    </ul>
+                                </div> -->
+                            </div>
+    			        </div>
+                        <div class="float-right">  
+                            <% if (pageCount > 0) { %>                          
+                                <div class="btn-group">
+                                    <% if (currentPage == 1) { %>
+                                    <a class="btn btn-default disabled"><i class="fa fa-angle-left"></i></a>
+                                    <% } else { %>
+                                    <a href="../../admin/inbox/?page=<%= Number(currentPage)-1 %>" class="btn btn-default"><i class="fa fa-angle-left"></i></a>
+                                    <% } %>
+                                    <% if (currentPage == pageCount) { %>
+                                    <a class="btn btn-default disabled"><i class="fa fa-angle-right"></i></a>
+                                    <% } else { %>
+                                    <a href="../../admin/inbox/?page=<%= Number(currentPage)+1 %>" class="btn btn-default"><i class="fa fa-angle-right"></i></a>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <table class="table">
+                        <tbody>
+                            <% All.forEach(function (o) { %>
+                            <tr class="table-row" onclick="location.href='../../admin/inbox/<%= o.ticket %>'">
+                                <td class="march" style="word-wrap: break-word;word-break: break-all;width: 130px">
+                                   <%= o.idate %></br>
+                                   <%= o.itime %>
+                                </td>
+                                <td class="table-text" style="width: 500px">
+                                	<h6><%=o.nama%></h6>
+                                    <p><%=o.pesan.substring(0,60)%></p>
+                                </td>
+                                <td class="march" style="width: 320px">
+                                   <%=o.email%></br>
+                                   <%=o.telephone%>
+                                </td>
+                                <td>
+                                    <span class="<%=o.status%>"><%=o.status%></span>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+	</div>
+
+<% include ../admin/layouts/footer %>
+</body>
+</html>
+

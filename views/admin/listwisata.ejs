@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--header-->
+<% include ../admin/layouts/header %>
+<!--//header-->
+
+<body>
+
+<!-- Sidebar -->
+<% include ../admin/layouts/sidebar %>
+<!-- //Sidebar -->       	
+ 	 <!--faq-->
+ <div class="blank">
+	<div class="blank-page">
+        <h3><%=title%></h3>
+        <div class="but_list">
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Wisata Alam</a></li>
+                    <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Wisata Kuliner</a></li>
+                </ul>
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>
+                                    No
+                                    </th>
+                                    <th>
+                                        ID Wisata
+                                    </th>
+                                    <th>
+                                        Name Wisata
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Maps Location
+                                    </th>
+                                    <th>
+                                        Images
+                                    </th>
+                                    <th>
+                                        Created
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    </thead>
+                                    <tbody class="text-wrap">
+                                         <% Alam.forEach(function (ia,index) { %>
+                                    <tr>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= ia.wisata_id %>
+                                        </td>
+                                        <td>
+                                            <%= ia.name %>
+                                        </td>
+                                        <td>
+                                            <%= ia.descr.substring(0,120) %>..
+                                        </td>
+                                        <td>
+                                            <%= ia.maps.substring(0,60) %>..
+                                        </td>
+                                        <td>
+                                            <img src="../uploads/wisata/<%=ia.images%>" width="150" alt="">
+                                        </td>
+                                        <td>
+                                            <%= ia.update_at%>
+                                        </td>
+                                        <td>
+                                           <a href="./editwisata/<%=ia.wisata_id%>" class="btn btn-primary">Edit</a>
+                                            <a href="./delwisata/<%=ia.wisata_id%>" class="btn btn-danger">Del</a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                    </tbody>
+                                </table>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+            <table class="table">
+                <thead class="text-primary">
+                                    <th>
+                                        No
+                                    </th>
+                                    <th>
+                                        ID Wisata
+                                    </th>
+                                    <th>
+                                        Name Wisata
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Maps Location
+                                    </th>
+                                    <th>
+                                        Images
+                                    </th>
+                                    <th>
+                                        Created
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    </thead>
+                                    <tbody class="text-wrap">
+                                         <% Kuliner.forEach(function (ik,index) { %>
+                                    <tr>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= ik.wisata_id %>
+                                        </td>
+                                        <td>
+                                            <%= ik.name %>
+                                        </td>
+                                        <td>
+                                            <%= ik.descr.substring(0,120) %>..
+                                        </td>
+                                        <td>
+                                            <%= ik.maps.substring(0,60) %>..
+                                        </td>
+                                        <td>
+                                            <img src="../uploads/wisata/<%=ik.images%>" width="150" alt="">
+                                        </td>
+                                        <td>
+                                            <%= ik.update_at%>
+                                        </td>
+                                        <td>
+                                           <a href="./editwisata/<%=ik.wisata_id%>" class="btn btn-primary">Edit</a>
+                                            <a href="./delwisata/<%=ik.wisata_id%>" class="btn btn-danger">Del</a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                    </tbody>
+                                </table>
+          </div>
+        </div>
+   </div>
+   </div>
+	        		
+	        </div>
+	</div>
+
+	<!--//faq-->
+		<!---->
+<% include ../admin/layouts/footer %>
+</body>
+</html>
