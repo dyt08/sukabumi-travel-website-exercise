@@ -15,7 +15,7 @@ var admin = require('./routes/admin');
 
 var app = express();
 
-var mysql = require ('mysql');
+var mysql = require('mysql');
 
 //auth
 var session = require('express-session');
@@ -40,32 +40,32 @@ var connection = mysql.createConnection(dbOptions);
 connection.connect();
 var sessionStore = new MySQLStore(dbOptions);
 
- //session
+//session
 app.use(session({
     secret: 'secret',
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
     //cookie: { secure: true }
-	}));
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy({
-        usernameField: 'username_login',
-        passwordField: 'password_login',
-        session: false
-    },
-    function(username, password, done) {
+    usernameField: 'username_login',
+    passwordField: 'password_login',
+    session: false
+},
+    function (username, password, done) {
         const db = connection;
-        db.query('SELECT *FROM users WHERE username_login =?',[username],function (err,results,fields) {
+        db.query('SELECT *FROM users WHERE username_login =?', [username], function (err, results, fields) {
 
-            if(err){
+            if (err) {
                 done(err);
             }
-            if(!results){
+            if (!results) {
                 return done(null, false);
-            }else if(results === 0){
+            } else if (results === 0) {
                 done(null, false);
             }
             return done(null, results[0]);
@@ -74,22 +74,22 @@ passport.use(new LocalStrategy({
     }));
 
 
-    app.use(function (req,res,next) {
+app.use(function (req, res, next) {
 
-        res.locals.isAuthenticated = req.isAuthenticated();
-        //res.locals.isAdmin = req.user.role='admin';
+    res.locals.isAuthenticated = req.isAuthenticated();
+    //res.locals.isAdmin = req.user.role='admin';
 
-        if(req.isAuthenticated()) {
-            res.locals.userLogin = req.user.username_login;
-            res.locals.userEmail = req.user.Email;
-            res.locals.userFirstName = req.user.FirstName;
-            res.locals.userLastName = req.user.LastName;
-            res.locals.userPhone = req.user.Phone;
-            res.locals.userPhoto = req.user.Photo;
-            res.locals.role = req.user.role;
-        }
-        next();
-    });
+    if (req.isAuthenticated()) {
+        res.locals.userLogin = req.user.username_login;
+        res.locals.userEmail = req.user.Email;
+        res.locals.userFirstName = req.user.FirstName;
+        res.locals.userLastName = req.user.LastName;
+        res.locals.userPhone = req.user.Phone;
+        res.locals.userPhoto = req.user.Photo;
+        res.locals.role = req.user.role;
+    }
+    next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -136,7 +136,7 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.set('port', process.env.PORT || 2000);
+app.set('port', process.env.PORT || 2001);
 
 var server = app.listen(app.get('port'), function () {
     debug('Express server listening on port ' + server.address().port);
